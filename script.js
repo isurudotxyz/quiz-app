@@ -3,7 +3,7 @@ const questions = [
     question: "Which is largest animal in the world?",
     answers: [
       { text: "Shark", correct: false },
-      { text: "Blue", correct: true },
+      { text: "Blue Whale", correct: true },
       { text: "Elephant", correct: false },
       { text: "Giraffe", correct: false },
     ],
@@ -18,7 +18,7 @@ const questions = [
     ],
   },
   {
-    question: "Which is largest desert in the world",
+    question: "Which is largest desert in the world?",
     answers: [
       { text: "Kalahari", correct: false },
       { text: "Gobi", correct: false },
@@ -54,10 +54,8 @@ function startQuiz() {
 function showQuestion() {
   resetState();
   let currentQuestion = questions[currentQuestionIndex];
-  console.log(currentQuestion, currentQuestionIndex);
   let questionNo = currentQuestionIndex + 1;
   questionElement.innerHTML = questionNo + ". " + currentQuestion.question;
-  console.log(currentQuestion);
 
   currentQuestion.answers.forEach((answer) => {
     const button = document.createElement("button");
@@ -115,6 +113,8 @@ function handleNextButton() {
 nextButton.addEventListener("click", () => {
   if (currentQuestionIndex < questions.length) {
     handleNextButton();
+  } else {
+    startQuiz();
   }
 });
 startQuiz();
